@@ -11,6 +11,7 @@
   <properties>
     <hadoop.version>3.3.6</hadoop.version>
   </properties>
+  <!-- 1-1.0-SNAPSHOT -->
 
   <dependencies>
     <dependency>

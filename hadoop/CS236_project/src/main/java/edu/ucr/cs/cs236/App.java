@@ -28,25 +28,26 @@ public class App {
 
             //TODO: Put a string value to group by. Note how the group variable is used in the rest of the function
             // How will you get the group-by value?
-            String group = ""; 
+            String group = tokens[1]; 
 
             // TODO: Put the column that you are summing
             // Where do you use this? Think about your SQL query that you wrote for PySpark
-            String variable_to_sum = "";
+            String variable_to_sum = tokens[3];
 
             // TODO: Change the condition to filter to make sure you're summing up only the values that you want
-            if (true){
+            if (variable_.equals("2010_Census_Population")){
                 try {
                     // TODO: Parse the correct token into an integer
                     // it is okay to hard-code the index of tokens
                     // Use Integer.parseInt() to do this
-                    // int colValue = ____;
+                    int colValue = Integer.parseInt(tokens[4]);
 
                     // TODO: What will the groupKey be? This is how Hadoop knows what to sum together
                     // use `groupKey.set(____);`
+                    groupKey.set(group);
 
                     // TODO: What value will you be pairing with the key? This is the value that Hadoop is summing
-                    // outputValue.set(_____);
+                    outputValue.set(colValue);
 
                     context.write(groupKey, outputValue);
                 } catch (NumberFormatException e) {
@@ -67,7 +68,7 @@ public class App {
             for (IntWritable val : values) {
                 // TODO: values is an iterable that contains all the values pertaining to the key 
                 // How do we get the total value?
-                
+                sum += val.get();
                 // `sum = ____`;
             }
             result.set(sum);
